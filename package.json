@@ -1,0 +1,50 @@
+{
+  "name": "es6",
+  "version": "1.0.0",
+  "description": "https://github.com/SnovyDesigns/es6.git",
+  "main": "index.js",
+  "scripts": {
+    "start": "babel script.js --watch --out-file script-compiled.js",
+    "test": "npm-run-all test:*",
+    "test:html": "nu-html-checker *.html",
+    "init-project": "npm-run-all init-project:*",
+    "init-project:clean": "rm -rf .git css images js sass",
+    "init-project:dirs": "mkdir -p css sass js images",
+    "init-project:files": "touch README.md index.html css/style.css sass/style.scss js/scripts.js",
+    "init-project:git": "git init",
+    "init-project:gitignore": "curl https://raw.githubusercontent.com/github/gitignore/master/Node.gitignore -o .gitignore",
+    "build": "npm-run-all build:* test",
+    "build:clean": "rm -rf css",
+    "build:sass": "node-sass --output-style compact -o css sass",
+    "build:autoprefixer": "autoprefixer-cli css/style.css",
+    "build-dev:sass": "node-sass --output-style expanded --source-map true -o css sass",
+    "watch": "npm-run-all build --parallel watch:* ",
+    "watch:sassprefixer": "onchange sass/style*.scss -- npm-run-all sass autoprefixer",
+    "sass": "node-sass --output-style expanded --source-map true -o css sass",
+    "autoprefixer": "autoprefixer-cli css/style*.css",
+    "watch:browsersync": "browser-sync start --server --files 'css/*.css' 'js/*.js' '*.html'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer-cli": "^1.0.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-latest": "^6.24.1",
+    "browser-sync": "^2.24.4",
+    "node-sass": "^4.9.0",
+    "npm-run-all": "^4.1.3",
+    "nu-html-checker": "^0.1.0",
+    "onchange": "^4.0.0",
+    "rimraf": "^2.6.2"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SnovyDesigns/es6.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SnovyDesigns/es6/issues"
+  },
+  "homepage": "https://github.com/SnovyDesigns/es6/#readme"
+}
