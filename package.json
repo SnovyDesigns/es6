@@ -4,7 +4,7 @@
   "description": "https://github.com/SnovyDesigns/es6.git",
   "main": "index.js",
   "scripts": {
-    "start": "babel script.js --watch --out-file script-compiled.js",
+    "start": "babel js/scripts.js --watch --out-file js/scripts-compiled.js",
     "test": "npm-run-all test:*",
     "test:html": "nu-html-checker *.html",
     "init-project": "npm-run-all init-project:*",
